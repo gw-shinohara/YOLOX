@@ -10,7 +10,7 @@ import numpy as np
 import onnxruntime
 
 from yolox.data.data_augment import preproc as preprocess
-from yolox.data.datasets import COCO_CLASSES
+from yolox.data.datasets import GRASPED_CLASSES
 from yolox.utils import mkdir, multiclass_nms, demo_postprocess, vis
 
 
@@ -79,7 +79,7 @@ if __name__ == '__main__':
     if dets is not None:
         final_boxes, final_scores, final_cls_inds = dets[:, :4], dets[:, 4], dets[:, 5]
         origin_img = vis(origin_img, final_boxes, final_scores, final_cls_inds,
-                         conf=args.score_thr, class_names=COCO_CLASSES)
+                         conf=args.score_thr, class_names=GRASPED_CLASSES)
 
     mkdir(args.output_dir)
     output_path = os.path.join(args.output_dir, os.path.basename(args.image_path))
