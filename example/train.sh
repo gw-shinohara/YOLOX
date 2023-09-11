@@ -14,8 +14,9 @@ exp_name="grasped_yolox_s"
 exp_path="$prj_dir/exps/custom/$exp_name.py"
 project_name="Detect_white_cane_with_$exp_name"
 
-python3 $prj_dir/tools/train.py \
+nohup python3 $prj_dir/tools/train.py \
 -f $exp_path \
 -d 1 \
 -b 32 \
---cache
+--cache \
+&
