@@ -133,6 +133,7 @@ if __name__ == "__main__":
 
     if args.cache is not None:
         exp.dataset = exp.get_dataset(cache=True, cache_type=args.cache)
+        print("Caching Dataset")
 
     dist_url = "auto" if args.dist_url is None else args.dist_url
     launch(
