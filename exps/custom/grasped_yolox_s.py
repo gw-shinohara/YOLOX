@@ -33,17 +33,14 @@ class Exp(MyExp):
                 "ram" : Caching imgs to ram for fast training.
                 "disk": Caching imgs to disk for fast training.
         """
-        from yolox.data import COCODataset, TrainTransform
+        from yolox.data import COCODataset
 
         return COCODataset(
             data_dir=self.data_dir,
             json_file=self.train_ann,
             name="2nd",
             img_size=self.input_size,
-            preproc=TrainTransform(
-                max_labels=50,
-                hsv_prob=self.hsv_prob
-            ),
+            preproc=None,
             cache=cache,
             cache_type=cache_type,
         )

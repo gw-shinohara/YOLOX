@@ -17,6 +17,6 @@ project_name="Detect_white_cane_with_$exp_name"
 nohup python3 $prj_dir/tools/train.py \
 -f $exp_path \
 -d 1 \
--b 32 \
+-b 64 \
 --cache \
 &
