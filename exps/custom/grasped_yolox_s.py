@@ -16,7 +16,7 @@ class Exp(MyExp):
         # Define yourself dataset path
         self.data_dir = "/home/shinohara/Documents/YOLOX/datasets/white_cane_detection"
         self.train_ann = "grasped_dataset_train.json"
-        self.val_ann = "grasped_dataset_val.json"
+        self.val_ann = "grasped_sub_dataset_val.json"
 
         self.num_classes = 13
 

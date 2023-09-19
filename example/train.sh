@@ -14,9 +14,10 @@ exp_name="grasped_yolox_s"
 exp_path="$prj_dir/exps/custom/$exp_name.py"
 project_name="Detect_white_cane_with_$exp_name"
 
-nohup python3 $prj_dir/tools/train.py \
+gnome-terminal -- tail -f $prj_dir/YOLOX_outputs/$exp_name/train_log.txt
+
+python3 $prj_dir/tools/train.py \
 -f $exp_path \
 -d 1 \
--b 64 \
---cache \
-&
+-b 32 \
+--cache
