@@ -20,7 +20,11 @@ class Exp(MyExp):
 
         self.num_classes = 13
 
-        self.max_epoch = 300
+        self.max_epoch = 15
+
+        # last #epoch to close augmention like mosaic
+        self.no_aug_epochs = 999
+
         self.data_num_workers = 4
         self.eval_interval = 1
 
