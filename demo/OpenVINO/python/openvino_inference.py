@@ -75,6 +75,11 @@ def parse_args() -> argparse.Namespace:
     return parser.parse_args()
 
 
+from tools.calculation_time import calc_time
+@calc_time
+def run_openvino_inference(exec_net, input_blob, image):
+    return exec_net.infer(inputs={input_blob: image})
+
 def main():
     log.basicConfig(format='[ %(levelname)s ] %(message)s', level=log.INFO, stream=sys.stdout)
     args = parse_args()
@@ -123,7 +128,7 @@ def main():
 
     # ---------------------------Step 7. Do inference----------------------------------------------------------------------
     log.info('Starting inference in synchronous mode')
-    res = exec_net.infer(inputs={input_blob: image})
+    res = run_openvino_inference(exec_net, input_blob, image)
 
     # ---------------------------Step 8. Process output--------------------------------------------------------------------
     res = res[out_blob]

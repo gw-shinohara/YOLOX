@@ -52,6 +52,10 @@ def make_parser():
     )
     return parser
 
+from tools.calculation_time import calc_time
+@calc_time
+def run_onnx_inference(session, ort_inputs):
+    return session.run(None, ort_inputs)
 
 if __name__ == '__main__':
     args = make_parser().parse_args()
@@ -63,7 +67,9 @@ if __name__ == '__main__':
     session = onnxruntime.InferenceSession(args.model)
 
     ort_inputs = {session.get_inputs()[0].name: img[None, :, :, :]}
-    output = session.run(None, ort_inputs)
+
+    output = run_onnx_inference(session, ort_inputs)
+
     predictions = demo_postprocess(output[0], input_shape)[0]
 
     boxes = predictions[:, :4]
