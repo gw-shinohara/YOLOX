@@ -20,7 +20,6 @@ gnome-terminal -- tail -f $prj_dir/YOLOX_outputs/$exp_name/train_log.txt
 
 python3 $prj_dir/tools/train.py \
 -f $exp_path \
---resume True \
 --ckpt $weights_path \
 --start_epoch $start_epoch \
 -d 1 \
