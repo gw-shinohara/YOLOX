@@ -7,7 +7,7 @@ def calc_time(meat_paste):
         ed=time.time()
         dt=ed-st
         print(f"Execution time: {dt}s")
-        print(f"Execution FPS : {1/dt}s")
+        print(f"Execution FPS : {1/dt}")
         
         return result
     return wrapper
