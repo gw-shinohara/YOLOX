@@ -15,7 +15,7 @@ class Exp(MyExp):
 
         # Define yourself dataset path
         self.data_dir = "/home/shinohara/Documents/YOLOX/datasets/white_cane_detection"
-        self.train_ann = "grasped_dataset_train.json"
+        self.train_ann = "grasped_dataset_train_no_obj.json"
         self.val_ann = "grasped_sub_dataset_val.json"
 
         self.num_classes = 13
@@ -40,9 +40,9 @@ class Exp(MyExp):
         from yolox.data import COCODataset
 
         return COCODataset(
-            data_dir=self.data_dir,
+            data_dir="/home/shinohara/Downloads/grasped_dataset_train_no_obj",
             json_file=self.train_ann,
-            name="2nd",
+            name="aug",
             img_size=self.input_size,
             preproc=None,
             cache=cache,
@@ -55,9 +55,15 @@ class Exp(MyExp):
         legacy = kwargs.get("legacy", False)
 
         return COCODataset(
-            data_dir=self.data_dir,
+            data_dir="/home/shinohara/Documents/YOLOX/datasets/white_cane_detection",
             json_file=self.val_ann if not testdev else self.test_ann,
             name="2nd" if not testdev else "2nd",
             img_size=self.test_size,
             preproc=ValTransform(legacy=legacy),
         )
+
+    def get_model(self):
+        from yolox.utils import freeze_module
+        model = super().get_model()
+        freeze_module(model.backbone.backbone)
+        return model

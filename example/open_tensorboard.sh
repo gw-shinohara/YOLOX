@@ -1,4 +1,4 @@
 #/bin/bash
 
 google-chrome http://localhost:6006/
-tensorboard --logdir YOLOX_outputs/grasped_yolox_s/tensorboard/
+tensorboard --logdir $HOME/Document/YOLOX/YOLOX_outputs/grasped_yolox_s_freeze/tensorboard/
